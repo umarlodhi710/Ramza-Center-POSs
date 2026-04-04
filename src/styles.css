@@ -1,0 +1,154 @@
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --primary: #1459d9;
+  --text: #1d1f24;
+  --muted: #687083;
+  --border: #d9deea;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, Segoe UI, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 40px);
+}
+
+.sidebar {
+  background: #0f1729;
+  color: #fff;
+  padding: 20px;
+}
+
+.subtitle {
+  color: #a9b5d1;
+}
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  background: transparent;
+  border: 1px solid #2d3c5f;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+  background: #1b2c55;
+}
+
+.content {
+  padding: 20px;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stacked-form {
+  display: grid;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.stacked-form.inline {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+button {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+  background: var(--card);
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 8px;
+  font-size: 14px;
+}
+
+.search-results {
+  background: #fff;
+  border: 1px solid var(--border);
+  max-height: 180px;
+  overflow: auto;
+  margin-top: 6px;
+}
+
+.search-item {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background: #eef3ff;
+}
+
+footer {
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  background: #0f1729;
+  color: #fff;
+  font-size: 13px;
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quetta Ramza center POS</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>Quetta Ramza center</h1>
+        <p class="subtitle">Bike Showroom POS</p>
+        <nav>
+          <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+          <button class="nav-btn" data-tab="sales">Sales</button>
+          <button class="nav-btn" data-tab="inventory">Inventory</button>
+          <button class="nav-btn" data-tab="customers">Customers</button>
+          <button class="nav-btn" data-tab="expenses">Expenses</button>
+          <button class="nav-btn" data-tab="investments">Investments</button>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="tab active" id="dashboard-tab">
+          <h2>Dashboard Analytics</h2>
+          <div class="cards" id="dashboard-cards"></div>
+        </section>
+
+        <section class="tab" id="sales-tab">
+          <h2>Sales Billing</h2>
+          <div class="grid-2">
+            <div>
+              <label>Search Product</label>
+              <input id="product-search" placeholder="Type bike/scooty name..." />
+              <div id="search-results" class="search-results"></div>
+              <table>
+                <thead>
+                  <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr>
+                </thead>
+                <tbody id="cart-body"></tbody>
+              </table>
+              <h3 id="bill-total">Total: 0</h3>
+              <button id="print-invoice-btn">Print Invoice</button>
+              <button id="finalize-sale-btn">Finalize Sale</button>
+            </div>
+            <div>
+              <h3>Add Customer</h3>
+              <form id="customer-form" class="stacked-form">
+                <input name="name" placeholder="Customer name" required />
+                <input name="phone" placeholder="Phone" />
+                <button type="submit">Save Customer</button>
+              </form>
+              <label>Choose Customer</label>
+              <select id="sale-customer"></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab" id="inventory-tab">
+          <h2>Inventory</h2>
+          <div class="grid-2">
+            <form id="product-form" class="stacked-form">
+              <input name="name" placeholder="Product Name" required />
+              <select name="category" required>
+                <option value="Bike">Bike</option>
+                <option value="Scooty">Scooty</option>
+              </select>
+              <input type="number" name="purchase_price" step="0.01" placeholder="Purchase Price" required />
+              <input type="number" name="selling_price" step="0.01" placeholder="Selling Price" required />
+              <input type="number" name="stock_qty" placeholder="Stock Quantity" required />
+              <button type="submit">Add Product</button>
+            </form>
+
+            <form id="purchase-form" class="stacked-form">
+              <h3>Log Purchase (Increase Stock)</h3>
+              <select name="product_id" id="purchase-product" required></select>
+              <input type="number" name="quantity" placeholder="Purchased Quantity" required />
+              <button type="submit">Add Stock</button>
+            </form>
+          </div>
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Name</th><th>Type</th><th>Purchase</th><th>Selling</th><th>Stock</th></tr>
+            </thead>
+            <tbody id="product-table"></tbody>
+          </table>
+        </section>
+
+        <section class="tab" id="customers-tab">
+          <h2>Customers</h2>
+          <table>
+            <thead><tr><th>ID</th><th>Name</th><th>Phone</th></tr></thead>
+            <tbody id="customers-table"></tbody>
+          </table>
+        </section>
+
+        <section class="tab" id="expenses-tab">
+          <h2>Expenses</h2>
+          <form id="expense-form" class="stacked-form inline">
+            <input name="description" placeholder="Description" required />
+            <input type="number" name="amount" step="0.01" placeholder="Amount" required />
+            <input name="category" placeholder="Category" required />
+            <input type="date" name="date" required />
+            <button type="submit">Save Expense</button>
+          </form>
+          <table>
+            <thead><tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th></tr></thead>
+            <tbody id="expenses-table"></tbody>
+          </table>
+        </section>
+
+        <section class="tab" id="investments-tab">
+          <h2>Investments</h2>
+          <form id="investment-form" class="stacked-form inline">
+            <input name="partner_name" placeholder="Partner Name" required />
+            <input type="number" name="amount" step="0.01" placeholder="Amount" required />
+            <input type="date" name="date" required />
+            <button type="submit">Save Investment</button>
+          </form>
+          <table>
+            <thead><tr><th>Partner</th><th>Amount</th><th>Date</th></tr></thead>
+            <tbody id="investments-table"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      Lodhi Software House | Contact: muhammadumarkhanlodhi06@gmail.com
+    </footer>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

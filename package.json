@@ -1,0 +1,24 @@
+{
+  "name": "quetta-ramza-center-pos",
+  "version": "1.0.0",
+  "description": "Desktop POS System for Quetta Ramza center",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "lint": "echo 'No linter configured yet'",
+    "check": "node -e \"console.log('Project sanity check passed')\""
+  },
+  "keywords": [
+    "electron",
+    "pos",
+    "sqlite",
+    "bike-showroom"
+  ],
+  "author": "Lodhi Software House",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "electron": "^30.0.9"
+  }
+}
