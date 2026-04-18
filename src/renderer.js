@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindNavigation();
   bindForms();
   bindSales();
+  bindMessBilling();
   bootstrap();
 });
 
@@ -128,6 +129,60 @@ function bindSales() {
   document.getElementById('sale-customer').addEventListener('change', (e) => {
     state.selectedCustomerId = e.target.value ? Number(e.target.value) : null;
   });
+}
+
+function bindMessBilling() {
+  const messBillingForm = document.getElementById('mess-billing-form');
+  const previewContainer = document.getElementById('mess-bill-preview');
+
+  if (!messBillingForm || !previewContainer) {
+    return;
+  }
+
+  messBillingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+
+    const residentName = form.get('resident_name')?.toString().trim();
+    const roomNo = form.get('room_no')?.toString().trim();
+    const billingMonth = form.get('billing_month')?.toString();
+    const totalMeals = Number(form.get('total_meals') || 0);
+    const mealRate = Number(form.get('meal_rate') || 0);
+    const utilityCharges = Number(form.get('utility_charges') || 0);
+    const otherCharges = Number(form.get('other_charges') || 0);
+
+    if (!residentName || !roomNo || !billingMonth) {
+      alert('Please fill all required fields for bill generation.');
+      return;
+    }
+
+    const foodTotal = totalMeals * mealRate;
+    const grandTotal = foodTotal + utilityCharges + otherCharges;
+    const monthLabel = formatBillingMonth(billingMonth);
+
+    previewContainer.classList.remove('muted-text');
+    previewContainer.innerHTML = `
+      <div class="bill-line"><strong>Name:</strong> ${residentName}</div>
+      <div class="bill-line"><strong>Room:</strong> ${roomNo}</div>
+      <div class="bill-line"><strong>Billing Month:</strong> ${monthLabel}</div>
+      <hr />
+      <div class="bill-line">Meals: ${totalMeals} × ${currency(mealRate)} = <strong>${currency(foodTotal)}</strong></div>
+      <div class="bill-line">Utility Charges: <strong>${currency(utilityCharges)}</strong></div>
+      <div class="bill-line">Other Charges: <strong>${currency(otherCharges)}</strong></div>
+      <hr />
+      <div class="bill-line"><strong>Total Bill: ${currency(grandTotal)}</strong></div>
+    `;
+  });
+}
+
+function formatBillingMonth(value) {
+  const [year, month] = value.split('-');
+  if (!year || !month) {
+    return value;
+  }
+
+  const date = new Date(Number(year), Number(month) - 1, 1);
+  return date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
 }
 
 function renderSearchResults(products) {
