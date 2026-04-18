@@ -14,6 +14,7 @@
         <nav>
           <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
           <button class="nav-btn" data-tab="sales">Sales</button>
+          <button class="nav-btn" data-tab="mess-billing">Mess Billing</button>
           <button class="nav-btn" data-tab="inventory">Inventory</button>
           <button class="nav-btn" data-tab="customers">Customers</button>
           <button class="nav-btn" data-tab="expenses">Expenses</button>
@@ -53,6 +54,29 @@
               </form>
               <label>Choose Customer</label>
               <select id="sale-customer"></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab" id="mess-billing-tab">
+          <h2>Mess Billing Website Generator</h2>
+          <div class="grid-2">
+            <form id="mess-billing-form" class="stacked-form">
+              <input name="resident_name" placeholder="Resident Name" required />
+              <input name="room_no" placeholder="Room Number" required />
+              <input type="month" name="billing_month" required />
+              <input type="number" min="0" name="total_meals" placeholder="Total Meals" required />
+              <input type="number" min="0" step="0.01" name="meal_rate" placeholder="Rate Per Meal" required />
+              <input type="number" min="0" step="0.01" name="utility_charges" placeholder="Utility Charges" value="0" />
+              <input type="number" min="0" step="0.01" name="other_charges" placeholder="Other Charges" value="0" />
+              <button type="submit">Generate Bill</button>
+            </form>
+
+            <div class="card">
+              <h3>Generated Bill</h3>
+              <div id="mess-bill-preview" class="bill-preview muted-text">
+                Fill the form and click <strong>Generate Bill</strong> to preview the monthly mess invoice.
+              </div>
             </div>
           </div>
         </section>
